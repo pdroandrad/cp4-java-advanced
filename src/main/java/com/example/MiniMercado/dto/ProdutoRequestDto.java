@@ -35,8 +35,8 @@ public class ProdutoRequestDto {
     private String setor;
 
     @Schema(
-            description="Tamanho do produto (em peso ou volume)",
-            example="1kg"
+            description="Tamanho do produto (P, M ou G)",
+            example="M"
     )
     @NotNull(message = "O tamanho do produto é obrigatório!")
     private Tamanho tamanho;

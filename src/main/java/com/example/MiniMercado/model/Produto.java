@@ -32,6 +32,8 @@ public class Produto {
     @Column(nullable = false)
     private String setor;
 
+
+    // Pode ser medida (kg, ml...)
     @Enumerated(EnumType.STRING)
     @NotNull
     @Column(nullable = false)
