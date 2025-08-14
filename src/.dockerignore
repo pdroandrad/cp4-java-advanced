@@ -1,0 +1,14 @@
+.idea/
+.settings/
+.classpath
+.project
+.factorypath
+
+target/
+
+.git/
+.gitignore
+.gitattributes
+
+README.md
+HELP.md
