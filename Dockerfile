@@ -19,6 +19,6 @@ RUN chown -R backend:backend /app
 
 USER backend
 
-EXPOSE 8080
+EXPOSE 8082
 
 CMD ["java", "-jar", "/app/app.jar"]
