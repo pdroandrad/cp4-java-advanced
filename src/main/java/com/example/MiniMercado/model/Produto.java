@@ -2,8 +2,10 @@ package com.example.MiniMercado.model;
 
 import com.example.MiniMercado.utils.Tamanho;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
 @Getter
@@ -21,25 +23,27 @@ public class Produto {
     private Long id;
 
     @NotBlank
-    @Column(nullable = false)
+    @Size(max = 30, message = "O nome não pode ter mais de 30 caracteres.")
+    @Column(nullable = false, length = 30)
     private String nome;
 
     @NotBlank
-    @Column(nullable = false)
+    @Size(max = 30, message = "O tipo não pode ter mais de 30 caracteres.")
+    @Column(nullable = false, length = 30)
     private String tipo;
 
     @NotBlank
-    @Column(nullable = false)
+    @Size(max = 30, message = "O setor não pode ter mais de 30 caracteres.")
+    @Column(nullable = false, length = 30)
     private String setor;
-
-
-    // Pode ser medida (kg, ml...)
+    
     @Enumerated(EnumType.STRING)
     @NotNull
     @Column(nullable = false)
     private Tamanho tamanho;
 
     @NotNull
-    @Column(nullable = false)
+    @Digits(integer = 5, fraction = 2)
+    @Column(nullable = false, precision = 7, scale = 2)
     private Double preco;
 }
