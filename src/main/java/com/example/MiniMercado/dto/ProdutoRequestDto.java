@@ -6,6 +6,8 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
+import java.math.BigDecimal;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -46,5 +48,5 @@ public class ProdutoRequestDto {
             example="4.29"
     )
     @NotNull(message = "O preço do produto é obrigatório!")
-    private Double preco;
+    private BigDecimal preco;
 }

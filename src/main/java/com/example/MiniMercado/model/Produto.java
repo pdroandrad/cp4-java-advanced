@@ -8,6 +8,8 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
+import java.math.BigDecimal;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -45,5 +47,5 @@ public class Produto {
     @NotNull
     @Digits(integer = 5, fraction = 2)
     @Column(nullable = false, precision = 7, scale = 2)
-    private Double preco;
+    private BigDecimal preco;
 }

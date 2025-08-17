@@ -3,6 +3,8 @@ package com.example.MiniMercado.dto;
 import com.example.MiniMercado.utils.Tamanho;
 import lombok.*;
 
+import java.math.BigDecimal;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -15,6 +17,6 @@ public class ProdutoResponseDto {
     private String tipo;
     private String setor;
     private Tamanho tamanho;
-    private Double preco;
+    private BigDecimal preco;
 
 }
