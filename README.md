@@ -1,52 +1,51 @@
 ## Dependências do projeto
 
-```
+```xml
 <dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId> <!-- Entity persistence -->
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
+			<artifactId>spring-boot-starter-web</artifactId> <!-- Brings RESTful service libraries -->
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
+			<artifactId>spring-boot-devtools</artifactId> <!-- Development tools -->
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>com.oracle.database.jdbc</groupId>
-			<artifactId>ojdbc11</artifactId>
+			<artifactId>ojdbc11</artifactId> <!-- Oracle Database connector -->
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
+			<artifactId>lombok</artifactId>  <!-- Generates getters and setters, constructors, etc  -->
 			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
+			<artifactId>spring-boot-starter-test</artifactId> <!-- Tests  -->
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-validation</artifactId>
+			<artifactId>spring-boot-starter-validation</artifactId> <!-- Validates request data using Jakarta Bean Validation (@NotNull, @Size, @Email) -->
 		</dependency>
 		<dependency>
 			<groupId>org.springdoc</groupId>
-			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>  <!-- Generates OpenAPI/Swagger documentation and provides Swagger UI for API testing -->
 			<version>2.7.0</version>
 		</dependency>
 </dependencies>
-
 ```
 
 ## Estrutura do projeto
 
-Construído em Arquitetura **MVC** -  Model View Controller
+Construído em Arquitetura **MVC** -  **_Model View Controller_**
 
 ``` 
 ├───src
@@ -82,7 +81,6 @@ Construído em Arquitetura **MVC** -  Model View Controller
 │   │   │
 │   │   └───resources
 │   │           application.properties
-
 ```
 ### **Camadas do projeto — Principais**
 
@@ -106,3 +104,10 @@ Construído em Arquitetura **MVC** -  Model View Controller
 - **Camada `SERVICE`**  
   Contém a lógica de negócio da aplicação.  
   Atua como intermediária entre o `Controller` e o `Repository`, garantindo que as regras de negócio sejam respeitadas antes de acessar ou modificar dados.
+
+## Swagger
+
+<!-- Link para o Swagger no Render -->
+
+
+  
