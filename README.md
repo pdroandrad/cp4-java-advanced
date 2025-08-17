@@ -105,6 +105,11 @@ Construído em Arquitetura **MVC** -  **_Model View Controller_**
   Contém a lógica de negócio da aplicação.  
   Atua como intermediária entre o `Controller` e o `Repository`, garantindo que as regras de negócio sejam respeitadas antes de acessar ou modificar dados.
 
+### Diagrama - Fluxo da aplicação
+
+![Diagrama](https://github.com/user-attachments/assets/f67379a6-1c0e-4877-a3d6-feb4fefdea19)
+
+
 ## Endpoints & Swagger
 
 <!-- Link para o Swagger no Render -->
