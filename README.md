@@ -105,9 +105,9 @@ Construído em Arquitetura **MVC** -  **_Model View Controller_**
   Contém a lógica de negócio da aplicação.  
   Atua como intermediária entre o `Controller` e o `Repository`, garantindo que as regras de negócio sejam respeitadas antes de acessar ou modificar dados.
 
-## Swagger
+## Endpoints & Swagger
 
 <!-- Link para o Swagger no Render -->
 
-
+<!-- Detalhamento dos endpoints -->
   
