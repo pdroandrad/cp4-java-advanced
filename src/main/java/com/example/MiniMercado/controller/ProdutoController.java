@@ -2,7 +2,8 @@ package com.example.MiniMercado.controller;
 
 import com.example.MiniMercado.dto.ProdutoRequestDto;
 import com.example.MiniMercado.dto.ProdutoResponseDto;
-import com.example.MiniMercado.model.Produto;
+import com.example.MiniMercado.dto.ProdutoUpdateDto;
+
 import com.example.MiniMercado.service.ProdutoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -10,9 +11,9 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
+
 
 @RestController
 @RequestMapping("/api/produtos")
@@ -26,11 +27,7 @@ public class ProdutoController {
     // GET /api/produtos
     @GetMapping
     public ResponseEntity<List<ProdutoResponseDto>> listarTodos(){
-        List<ProdutoResponseDto> produtos = produtoService.listarTodosProdutos()
-                .stream()
-                .map(this::toResponseDto)
-                .collect(Collectors.toList());
-
+        List<ProdutoResponseDto> produtos = produtoService.listarTodosProdutos();
         return ResponseEntity.ok(produtos);
     }
 
@@ -39,7 +36,6 @@ public class ProdutoController {
     @GetMapping("/id/{id}")
     public ResponseEntity<ProdutoResponseDto> buscarPorId(@PathVariable Long id){
         return produtoService.listarPorId(id)
-                .map(this::toResponseDto)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
@@ -48,10 +44,7 @@ public class ProdutoController {
     // GET /api/produtos/{nome}
     @GetMapping("/nome/{nome}")
     public ResponseEntity<List<ProdutoResponseDto>> buscarPorNome(@PathVariable String nome){
-        List<ProdutoResponseDto> produtos = produtoService.listarPorNome(nome)
-                .stream()
-                .map(this::toResponseDto)
-                .collect(Collectors.toList());
+        List<ProdutoResponseDto> produtos = produtoService.listarPorNome(nome);
         return ResponseEntity.ok(produtos);
     }
 
@@ -59,10 +52,7 @@ public class ProdutoController {
     // GET /api/produtos/{tipo}
     @GetMapping("/tipo/{tipo}")
     public ResponseEntity<List<ProdutoResponseDto>> buscarPorTipo(@PathVariable String tipo){
-        List<ProdutoResponseDto> produtos = produtoService.listarPorTipo(tipo)
-                .stream()
-                .map(this::toResponseDto)
-                .collect(Collectors.toList());
+        List<ProdutoResponseDto> produtos = produtoService.listarPorTipo(tipo);
         return ResponseEntity.ok(produtos);
     }
 
@@ -70,31 +60,24 @@ public class ProdutoController {
     // POST /api/produtos
     @PostMapping
     public ResponseEntity<ProdutoResponseDto> criarProduto(@RequestBody @Valid ProdutoRequestDto dto){
-        Produto produto = new Produto();
-        produto.setNome(dto.getNome());
-        produto.setTipo(dto.getTipo());
-        produto.setSetor(dto.getSetor());
-        produto.setTamanho(dto.getTamanho());
-        produto.setPreco(dto.getPreco());
-
-        Produto salvo = produtoService.criarProduto(produto);
-        return ResponseEntity.ok(toResponseDto(salvo));
-
+        ProdutoResponseDto salvo = produtoService.criarProduto(dto);
+        return ResponseEntity.ok(salvo);
     }
 
     @Operation(summary = "Atualiza um produto pelo Id")
     // PUT /api/produtos/{id}
     @PutMapping("/{id}")
     public ResponseEntity<ProdutoResponseDto> atualizarProduto(@PathVariable Long id, @RequestBody @Valid ProdutoRequestDto dto){
-        Produto produto = new Produto();
-        produto.setNome(dto.getNome());
-        produto.setTipo(dto.getTipo());
-        produto.setSetor(dto.getSetor());
-        produto.setTamanho(dto.getTamanho());
-        produto.setPreco(dto.getPreco());
+        ProdutoResponseDto atualizado = produtoService.atualizarProduto(id, dto);
+        return ResponseEntity.ok(atualizado);
+    }
 
-        Produto atualizado = produtoService.atualizarProduto(id, produto);
-        return ResponseEntity.ok(toResponseDto(atualizado));
+    @Operation(summary = "Atualiza parcialmente um produto pelo Id")
+    // PATCH /api/produtos/{id}
+    @PatchMapping("/{id}")
+    public ResponseEntity<ProdutoResponseDto> atualizarParcialProduto(@PathVariable Long id, @RequestBody ProdutoUpdateDto dto) {
+        ProdutoResponseDto atualizadoparcial = produtoService.atualizarParcialProduto(id, dto);
+        return ResponseEntity.ok(atualizadoparcial);
     }
 
     @Operation(summary = "Deleta um produto pelo Id")
@@ -103,18 +86,6 @@ public class ProdutoController {
     public ResponseEntity<Void> deletarProduto(@PathVariable Long id){
         produtoService.deletarProduto(id);
         return ResponseEntity.noContent().build();
-    }
-
-    // Metodo para converter dto
-    private ProdutoResponseDto toResponseDto(Produto produto) {
-        ProdutoResponseDto dto = new ProdutoResponseDto();
-        dto.setId(produto.getId());
-        dto.setNome(produto.getNome());
-        dto.setTipo(produto.getTipo());
-        dto.setSetor(produto.getSetor());
-        dto.setTamanho(produto.getTamanho());
-        dto.setPreco(produto.getPreco());
-        return dto;
     }
 
 }
