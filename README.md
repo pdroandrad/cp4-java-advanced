@@ -112,7 +112,7 @@ Construído em Arquitetura **MVC** -  **_Model View Controller_**
 
 ## Endpoints & Swagger
 
-<!-- Link para o Swagger no Render -->
+[Swagger](https://cp4-java-advanced-d66f.onrender.com/swagger-ui/index.html#/)
 
 <!-- Detalhamento dos endpoints -->
   
