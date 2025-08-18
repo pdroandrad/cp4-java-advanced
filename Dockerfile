@@ -13,7 +13,7 @@ RUN useradd -m -s /bin/bash backend
 
 WORKDIR /app
 
-COPY --from=build /build/target/api-0.0.1-SNAPSHOT.jar /app/app.jar
+COPY --from=build /build/target/MiniMercado-0.0.1-SNAPSHOT.jar /app/app.jar
 
 RUN chown -R backend:backend /app
 
