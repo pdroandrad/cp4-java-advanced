@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar Produto</title>
+</head>
+<body>
+<h1>Cadastrar Produto</h1>
+
+<form th:action="@{/produtos}" th:object="${produto}" method="post">
+    <div>
+        <label>Nome:</label>
+        <input type="text" th:field="*{nome}" />
+    </div>
+
+    <div>
+        <label>Tipo:</label>
+        <input type="text" th:field="*{tipo}" />
+    </div>
+
+    <div>
+        <label>Setor:</label>
+        <input type="text" th:field="*{setor}" />
+    </div>
+
+    <div>
+        <label>Tamanho:</label>
+        <input type="text" th:field="*{tamanho}" />
+    </div>
+
+    <div>
+        <label>Preço:</label>
+        <input type="number" step="0.01" th:field="*{preco}" />
+    </div>
+
+    <div>
+        <button type="submit">Cadastrar</button>
+    </div>
+</form>
+
+<p>
+    <a th:href="@{/}">Voltar para lista de produtos</a>
+</p>
+</body>
+</html>
