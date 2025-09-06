@@ -7,6 +7,11 @@
 </head>
 <body>
     <h1>Tranquilo Mercados - Produtos</h1>
+    <form class="search" th:action="@{/tipo(tipo=${tipo})}" method="get">
+        <input type="text" name="tipo" th:value="${tipo}" placeholder="Search...">
+        <button type="submit">Search</button>
+    </form>
+    <div class="table-responsive">
     <table>
         <thead>
         <tr>
@@ -37,10 +42,11 @@
             </td>
         </tr>
         <tr th:if="${#lists.isEmpty(produtos)}">
-            <td colspan="6">Nenhum produto cadastrado.</td>
+            <td colspan="8">Nenhum produto cadastrado.</td>
         </tr>
         </tbody>
     </table>
+    </div>
     <div style="margin-top: 20px; text-align: center;">
         <form th:action="@{/produtos/novo}" method="get" style="display:inline">
             <button type="submit" class="action" >Adicionar Produto</button>

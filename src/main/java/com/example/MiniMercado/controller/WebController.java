@@ -23,10 +23,16 @@ public class WebController {
     @Autowired
     private ProdutoService produtoService;
 
-    @GetMapping("/")
-    public String index(Model model) {
-        List<ProdutoResponseDto> produtos = produtoService.listarTodosProdutos();
-        model.addAttribute("produtos", produtos);
+    @GetMapping(path={"/", "/tipo"})
+    public String index(String tipo, Model model) {
+        if (tipo != null) {
+            List<ProdutoResponseDto> produtos = produtoService.listarPorTipo(tipo);
+            model.addAttribute("produtos", produtos);
+        }
+        else {
+            List<ProdutoResponseDto> produtos = produtoService.listarTodosProdutos();
+            model.addAttribute("produtos", produtos);
+        }
         return "index";
     }
 
@@ -36,7 +42,6 @@ public class WebController {
         model.addAttribute("produto", new ProdutoRequestDto());
         return "produtos/cadastro";
     }
-
     // GET para mostrar o formulário de edição
     @GetMapping("/produtos/{id}/edit")
     public String editProduto(@PathVariable Long id, Model model) {
@@ -54,9 +59,8 @@ public class WebController {
             model.addAttribute("produto", formDto);
             model.addAttribute("produtoId", p.getId());
             return "produtos/edit";
-        } else {
-            return "redirect:/";
         }
+        return "";
     }
 
 
@@ -94,6 +98,7 @@ public class WebController {
         try {
             produtoService.deletarProduto(id);
             redirectAttributes.addFlashAttribute("sucesso", "Produto deletado com sucesso!");
+            return "redirect:/";
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("erro", "Erro ao deletar produto: " + e.getMessage());
         }
