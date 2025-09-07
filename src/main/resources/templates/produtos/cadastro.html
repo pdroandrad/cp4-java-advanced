@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar Produto</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<h1 class="title">Cadastrar Produto</h1>
+
+<center>
+    <form th:action="@{/produtos}" th:object="${produto}" method="post">
+        <div class="input-group">
+            <label>Nome:</label>
+            <div class="textInputWrapper">
+                <input class="textInput" type="text" th:field="*{nome}" />
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label>Tipo:</label>
+            <div class="textInputWrapper">
+                <input class="textInput" type="text" th:field="*{tipo}" />
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label>Setor:</label>
+            <div class="textInputWrapper">
+                <input class="textInput" type="text" th:field="*{setor}" />
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label>Tamanho:</label>
+            <div class="textInputWrapper">
+                <select class="textInput" th:field="*{tamanho}">
+                    <option th:each="t : ${T(com.example.MiniMercado.utils.Tamanho).values()}"
+                            th:value="${t}" th:text="${t}"></option>
+                </select>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label>Preço:</label>
+            <div class="textInputWrapper">
+                <input class="textInput" type="number" step="0.01" th:field="*{preco}" />
+            </div>
+        </div>
+
+        <div>
+            <button class="btn" type="submit">Cadastrar</button>
+        </div>
+    </form>
+
+    <p>
+        <a th:href="@{/}">Voltar para lista de produtos</a>
+    </p>
+</center>
+</body>
+</html>
