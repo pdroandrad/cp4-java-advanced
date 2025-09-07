@@ -8,7 +8,7 @@
 <body>
     <h1>Tranquilo Mercados - Produtos</h1>
     <form class="search" th:action="@{/tipo(tipo=${tipo})}" method="get">
-        <input type="text" name="tipo" th:value="${tipo}" placeholder="Search...">
+        <input type="text" name="tipo" th:value="${tipo}" placeholder="Pesquisa por tipo">
         <button type="submit">Search</button>
     </form>
     <div class="table-responsive">
