@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Tranquilo Mercados</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<h1>Login - Tranquilo Mercados</h1>
+<form class="authForm" th:action="@{/login}" method="post">
+    <label for="username">Username: </label>
+    <input type="text" id="username" name="username" placeholder="Username">
+    <label for="password">Password: </label>
+    <input type="password" id="password" name="password" placeholder="Password">
+    <button type="submit">Login</button>
+    <a style="cursor: pointer" th:action="@{/signin}" method="get">Crie uma conta</a>
+</form>
+</body>
+</html>
