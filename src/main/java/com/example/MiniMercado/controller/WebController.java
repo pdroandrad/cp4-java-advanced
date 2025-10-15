@@ -104,4 +104,25 @@ public class WebController {
         }
         return "redirect:/";
     }
+
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+
+    @PostMapping("/login")
+    public String login(@PathVariable String username, String password, RedirectAttributes redirectAttributes) {
+        try {
+
+        } catch (Exception e){
+
+        }
+
+
+        return "redirect:/";
+    }
+
+
+
+
 }
