@@ -1,12 +1,23 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
 <head>
     <meta charset="UTF-8">
     <title>Tranquilo Mercados - Produtos</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-    <h1>Tranquilo Mercados - Produtos</h1>
+    <header class="header">
+        <div class="logo">
+            <h1>Tranquilo Mercados</h1>
+        </div>
+
+        <div class="user-info">
+            <span class="username" sec:authentication="name">Usuário</span>
+            <form th:action="@{/logout}" method="post" style="display:inline;">
+                <button type="submit">Logout</button>
+            </form>
+        </div>
+    </header>
     <form class="search" th:action="@{/tipo(tipo=${tipo})}" method="get">
         <input type="text" name="tipo" th:value="${tipo}" placeholder="Pesquisa por tipo">
         <button type="submit">Search</button>

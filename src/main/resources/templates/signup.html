@@ -2,20 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Sign Up - Tranquilo Mercados</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-<form class="authForm" th:action="@{/signin}" method="post">
+
+
+<div th:if="${erro}" style="background-color: #5a0000; color: #fff; padding: 10px 20px; margin: 20px auto; width: fit-content; border-radius: 5px; font-weight: bold; text-align: center;">
+    <p th:text="${erro}"></p>
+</div>
+
+<h1>Cadastro - Tranquilo Mercados</h1>
+<form class="authForm" th:action="@{/signup}" method="post">
     <label for="username">Username: </label>
-    <input type="text" id="username" name="username" placeholder="Username">
+    <div class="textInputWrapper">
+    <input type="text" id="username" name="username" placeholder="Username" class="textInput">
+    </div>
     <label for="password">Password: </label>
-    <input type="password" id="password" name="password" placeholder="Password">
+    <div class="textInputWrapper">
+    <input type="password" id="password" name="password" placeholder="Password" class="textInput">
+    </div>
     <label for="role">Role: </label>
-    <select id="role" name="role">
-        <option value="admin">Administrador</option>
-        <option value="editor">Estoquista</option>
+    <div class="textInputWrapper">
+    <select id="role" name="role" class="textInput">
+        <option value="ROLE_ADMIN">Administrador</option>
+        <option value="ROLE_ESTOQUISTA">Estoquista</option>
     </select>
-    <button type="submit">Sign in</button>
+    </div>
+    <button type="submit">Sign up</button>
 </form>
 </body>
 </html>
