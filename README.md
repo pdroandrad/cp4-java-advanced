@@ -139,7 +139,6 @@ Construído em Arquitetura **MVC** -  **_Model View Controller_**
   Define os *endpoints* da API, mapeando requisições HTTP para métodos Java.  
   Recebe os dados (via *path*, *query params* ou *body*), delega a execução para a camada de serviço e retorna a resposta no formato especificado (JSON, XML, HTML, etc).
   
-
 - **Camada `DTO`** (*Data Transfer Object*)  
   Define os formatos de entrada (*Request DTO*) e saída (*Response DTO*) para isolar o modelo de dados interno e controlar o que é exposto ou recebido pela API.
 
@@ -164,23 +163,33 @@ Construído em Arquitetura **MVC** -  **_Model View Controller_**
 
 ![Diagrama](https://github.com/user-attachments/assets/f67379a6-1c0e-4877-a3d6-feb4fefdea19)
 
-## Endpoints, Swagger e Webpage em Thymeleaf
+## Endpoints - Swagger 
 
-[Swagger]()
+[Swagger](https://cp5-java-advanced.onrender.com/swagger-ui/index.html)
 
 ### Webpage em Thymeleaf, deploy feito no Render:
 
-[Página Inicial - Tranquilo Mercados]()
+[Tranquilo Mercados](https://cp5-java-advanced.onrender.com/login)
 
 Página inicial - Login
 - (endpoint **`/login` - login.html)
-  
+- Usuários cadastrados na execução do script `src/config/DataInitializer.java`
+
+| Usuário  | Senha | Role | Privilégios |
+| ------- | ----- | ---- |----------- |
+| admin    | senha123 | ROLE_ADMIN  | Acesso à todas as páginas |
+| estoquista | senha321 | ROLE_ESTOQUISTA | Acesso ao painel principal (`index.html`) e página de cadastro de produtos (`./produtos/cadastro.html`) |   
+
 <img width="1911" height="730" alt="image" src="https://github.com/user-attachments/assets/7c70a6ab-0768-4a29-bdc8-dae7f733db5d" />
+
+Crie uma conta redireciona para a página de Sign Up:
 
 Página de cadastro de usuário - Sign up
 - (endpoint **`/signup` - signup.html)
   
 <img width="1915" height="788" alt="image" src="https://github.com/user-attachments/assets/8ae87af4-6fbb-4868-a1fd-454d5e905b68" />
+
+É possível cadastrar usuários com duas roles diferentes
 
 Homepage do projeto "Tranquilo Mercados". A página lista os produtos cadastrados no sistema. No topo da tabela é possível pesquisar o produto pelo tipo dele. 
 - (endpoint **`/`** - index.html)
@@ -199,5 +208,5 @@ Voltando na página inicial, se clicarmos em editar, ele redireciona para a pág
 
 ## Vídeo demonstração
 
-[CP 4 - Java Advanced - Tranquilo Mercados](https://youtu.be/6aGuF5KRSXI)
+[Java Advanced - Tranquilo Mercados](https://youtu.be/6aGuF5KRSXI)
 
