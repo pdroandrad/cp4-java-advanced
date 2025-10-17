@@ -1,10 +1,13 @@
 package com.example.MiniMercado.config;
 
 import com.example.MiniMercado.model.Produto;
+import com.example.MiniMercado.model.Usuario;
 import com.example.MiniMercado.repository.ProdutoRepository;
+import com.example.MiniMercado.repository.UsuarioRepository;
 import com.example.MiniMercado.utils.Tamanho;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -14,6 +17,12 @@ public class DataInitializer implements CommandLineRunner {
 
     @Autowired
     private ProdutoRepository produtoRepository;
+
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public void run(String... args) throws Exception {
@@ -25,6 +34,11 @@ public class DataInitializer implements CommandLineRunner {
             produtoRepository.save(new Produto(null, "Feijão Carioca", "Grãos", "Alimentos básicos", Tamanho.M, new BigDecimal("7.50")));
             produtoRepository.save(new Produto(null, "Óleo de Soja Liza", "Óleos", "Alimentos básicos", Tamanho.M, new BigDecimal("6.79")));
             produtoRepository.save(new Produto(null, "Macarrão Espaguete", "Massas", "Alimentos básicos", Tamanho.M, new BigDecimal("2.99")));
+        }
+
+        if (usuarioRepository.count() == 0) {
+            usuarioRepository.save(new Usuario(null, "admin", passwordEncoder.encode("senha123"), "ROLE_ADMIN"));
+            usuarioRepository.save(new Usuario(null, "estoquista", passwordEncoder.encode( "senha321"), "ROLE_ESTOQUISTA"));
         }
     }
 }

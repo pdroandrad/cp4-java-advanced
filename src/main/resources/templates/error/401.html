@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" th:href="@{/css/404.css}">
-    <title>403 - Forbidden</title>
+    <link rel="stylesheet" th:href="@{/css/404.css}"> <!-- mantém o CSS original -->
+    <title>401 - Unauthorized</title>
 </head>
 <body>
-    <p>HTTP: <span>403</span></p>
-    <code><span>this_page</span>.<em>access_denied</em> = true;</code>
+    <p>HTTP: <span>401</span></p>
+    <code><span>this_page</span>.<em>unauthorized_access</em> = true;</code>
     <code><span>if</span> (<b>sem_permissao</b>) {<span>volta_ao_login()</span>;}</code>
     <code><span>else if (<b>a_gente_te_ferrou</b>)</span> {<em>alert</em>(<i>"Foi mal aí"</i>); <span>window</span>.<em>location</em> = home;}</code>
     <center><a th:href="@{/}">HOME</a></center>

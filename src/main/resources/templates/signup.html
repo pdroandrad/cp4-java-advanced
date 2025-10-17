@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up - Tranquilo Mercados</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+
+<div th:if="${erro}" style="background-color: #5a0000; color: #fff; padding: 10px 20px; margin: 20px auto; width: fit-content; border-radius: 5px; font-weight: bold; text-align: center;">
+    <p th:text="${erro}"></p>
+</div>
+
+<h1>Cadastro - Tranquilo Mercados</h1>
+<form class="authForm" th:action="@{/signup}" method="post">
+    <label for="username">Username: </label>
+    <div class="textInputWrapper">
+    <input type="text" id="username" name="username" placeholder="Username" class="textInput">
+    </div>
+    <label for="password">Password: </label>
+    <div class="textInputWrapper">
+    <input type="password" id="password" name="password" placeholder="Password" class="textInput">
+    </div>
+    <label for="role">Role: </label>
+    <div class="textInputWrapper">
+    <select id="role" name="role" class="textInput">
+        <option value="ROLE_ADMIN">Administrador</option>
+        <option value="ROLE_ESTOQUISTA">Estoquista</option>
+    </select>
+    </div>
+    <button type="submit">Sign up</button>
+</form>
+</body>
+</html>

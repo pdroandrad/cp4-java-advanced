@@ -6,14 +6,23 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
+
+<div th:if="${param.error}" style="background-color: #5a0000; color: #fff; padding: 10px 20px; margin: 20px auto; width: fit-content; border-radius: 5px; font-weight: bold; text-align: center;">
+    Usuário ou senha inválidos.
+</div>
+
 <h1>Login - Tranquilo Mercados</h1>
 <form class="authForm" th:action="@{/login}" method="post">
     <label for="username">Username: </label>
-    <input type="text" id="username" name="username" placeholder="Username">
+    <div class="textInputWrapper">
+    <input type="text" id="username" name="username" placeholder="Username" class="textInput">
+    </div>
     <label for="password">Password: </label>
-    <input type="password" id="password" name="password" placeholder="Password">
+    <div class="textInputWrapper">
+    <input type="password" id="password" name="password" placeholder="Password" class="textInput">
+    </div>
     <button type="submit">Login</button>
-    <a style="cursor: pointer" th:action="@{/signin}" method="get">Crie uma conta</a>
+    <a th:href="@{/signup}">Crie uma conta</a>
 </form>
 </body>
 </html>
