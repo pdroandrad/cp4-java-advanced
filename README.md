@@ -173,7 +173,7 @@ Construído em Arquitetura **MVC** -  **_Model View Controller_**
 
 Página inicial - Login
 - (endpoint **`/login` - login.html)
-- Usuários cadastrados na execução do script `src/config/DataInitializer.java`
+Usuários cadastrados na execução do script `src/config/DataInitializer.java`:
 
 | Usuário  | Senha | Role | Privilégios |
 | ------- | ----- | ---- |----------- |
