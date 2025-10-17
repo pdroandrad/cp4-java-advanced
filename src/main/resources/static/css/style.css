@@ -32,12 +32,6 @@ h1 {
     text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.1);
 }
 
-a{
-    text-decoration: none;
-
-}
-
-
 table {
     width: 90%;
     border-collapse: collapse;
@@ -138,6 +132,17 @@ div {
 
 a{
     font-size: 20px;
+    text-decoration: none;
+    color: #FFFFFF;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+    cursor: pointer;
+}
+
+a:hover,
+a:focus {
+    color: #8B0000;
+    text-decoration: underline;
+    outline: none;
 }
 
 .btn {
