@@ -2,49 +2,57 @@
 
 ```xml
 <dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId> <!-- Entity persistence -->
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId> <!-- Brings RESTful service libraries -->
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId> <!-- Development tools -->
-			<scope>runtime</scope>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>com.oracle.database.jdbc</groupId>
-			<artifactId>ojdbc11</artifactId> <!-- Oracle Database connector -->
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>  <!-- Generates getters and setters, constructors, etc  -->
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId> <!-- Tests  -->
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-validation</artifactId> <!-- Validates request data using Jakarta Bean Validation (@NotNull, @Size, @Email) -->
-		</dependency>
-		<dependency>
-			<groupId>org.springdoc</groupId>
-			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>  <!-- Generates OpenAPI/Swagger documentation and provides Swagger UI for API testing -->
-			<version>2.7.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId> <!-- Provides support for the Thymeleaf template engine to render HTML pages on the server side -->
-		</dependency>
-		</dependency>
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-data-jpa</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-web</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-devtools</artifactId>
+		<scope>runtime</scope>
+		<optional>true</optional>
+	</dependency>
+	<dependency>
+		<groupId>com.oracle.database.jdbc</groupId>
+		<artifactId>ojdbc11</artifactId>
+		<scope>runtime</scope>
+	</dependency>
+	<dependency>
+		<groupId>org.projectlombok</groupId>
+		<artifactId>lombok</artifactId>
+		<optional>true</optional>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-test</artifactId>
+		<scope>test</scope>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-validation</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.springdoc</groupId>
+		<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+		<version>2.7.0</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-thymeleaf</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-security</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.thymeleaf.extras</groupId>
+		<artifactId>thymeleaf-extras-springsecurity6</artifactId>
+		<version>3.1.1.RELEASE</version>
+	</dependency>
 </dependencies>
 ```
 
@@ -53,52 +61,77 @@
 Construído em Arquitetura **MVC** -  **_Model View Controller_**
 
 ``` 
-└── src
-    ├── main
-    │   ├── java
-    │   │   └── com
-    │   │       └── example
-    │   │           └── MiniMercado
-    │   │               ├── config
-    │   │               │   ├── DataInitializer.java
-    │   │               │   └── SwaggerConfig.java
-    │   │               ├── controller
-    │   │               │   ├── ProdutoController.java
-    │   │               │   └── WebController.java
-    │   │               ├── dto
-    │   │               │   ├── ProdutoRequestDto.java
-    │   │               │   ├── ProdutoResponseDto.java
-    │   │               │   └── ProdutoUpdateDto.java
-    │   │               ├── exception
-    │   │               │   ├── GlobalExceptionHandler.java
-    │   │               │   └── ResourceNotFoundException.java
-    │   │               ├── MiniMercadoApplication.java
-    │   │               ├── model
-    │   │               │   └── Produto.java
-    │   │               ├── repository
-    │   │               │   └── ProdutoRepository.java
-    │   │               ├── service
-    │   │               │   └── ProdutoService.java
-    │   │               └── utils
-    │   │                   └── Tamanho.java
-    │   └── resources
-    │       ├── application.properties
-    │       ├── static
-    │       │   ├── css
-    │       │   │   ├── 404.css
-    │       │   │   ├── error.css
-    │       │   │   └── style.css
-    │       │   └── js
-    │       │       └── 404.js
-    │       └── templates
-    │           ├── error
-    │           │   └── 404.html
-    │           ├── error.html
-    │           ├── index.html
-    │           └── produtos
-    │               ├── cadastro.html
-    │               └── edit.html
-
+├───src
+│   ├───main
+│   │   ├───java
+│   │   │   └───com
+│   │   │       └───example
+│   │   │           └───MiniMercado
+│   │   │               │   MiniMercadoApplication.java
+│   │   │               │
+│   │   │               ├───config
+│   │   │               │       DataInitializer.java
+│   │   │               │       SecurityConfig.java
+│   │   │               │       SwaggerConfig.java
+│   │   │               │
+│   │   │               ├───controller
+│   │   │               │       AuthController.java
+│   │   │               │       ProdutoController.java
+│   │   │               │       WebController.java
+│   │   │               │
+│   │   │               ├───dto
+│   │   │               │       ProdutoRequestDto.java
+│   │   │               │       ProdutoResponseDto.java
+│   │   │               │       ProdutoUpdateDto.java
+│   │   │               │
+│   │   │               ├───exception
+│   │   │               │       GlobalExceptionHandler.java
+│   │   │               │       ResourceNotFoundException.java
+│   │   │               │
+│   │   │               ├───model
+│   │   │               │       Produto.java
+│   │   │               │       Usuario.java
+│   │   │               │
+│   │   │               ├───repository
+│   │   │               │       ProdutoRepository.java
+│   │   │               │       UsuarioRepository.java
+│   │   │               │
+│   │   │               ├───service
+│   │   │               │       ProdutoService.java
+│   │   │               │       UserDetailServiceImpl.java
+│   │   │               │       UsuarioService.java
+│   │   │               │
+│   │   │               └───utils
+│   │   │                       Tamanho.java
+│   │   │
+│   │   └───resources
+│   │       │   application.properties
+│   │       │   env.properties
+│   │       │
+│   │       ├───static
+│   │       │   ├───css
+│   │       │   │       404.css
+│   │       │   │       error.css
+│   │       │   │       style.css
+│   │       │   │
+│   │       │   └───js
+│   │       │           404.js
+│   │       │
+│   │       └───templates
+│   │           │   error.html
+│   │           │   index.html
+│   │           │   login.html
+│   │           │   signup.html
+│   │           │
+│   │           ├───admin
+│   │           ├───error
+│   │           │       401.html
+│   │           │       403.html
+│   │           │       404.html
+│   │           │
+│   │           └───produtos
+│   │                   cadastro.html
+│   │                   edit.html
 ```
 ### **Camadas do projeto — Principais**
 
@@ -127,22 +160,31 @@ Construído em Arquitetura **MVC** -  **_Model View Controller_**
 - **Camada `RESOURCES`**
   Contém as configurações do Spring Boot e a implementação das páginas web em Thymeleaf, sendo o diretório `/static` para o .css e o .js e o diretório `/templates` a implementação das páginas em html com Thymeleaf.
 
-### Diagrama - Fluxo da aplicação
+### Diagrama - Fluxo da aplicação - Geral
 
 ![Diagrama](https://github.com/user-attachments/assets/f67379a6-1c0e-4877-a3d6-feb4fefdea19)
 
-
 ## Endpoints, Swagger e Webpage em Thymeleaf
 
-[Swagger](https://cp4-java-advanced-fzrf.onrender.com/swagger-ui/index.html#/)
+[Swagger]()
 
 ### Webpage em Thymeleaf, deploy feito no Render:
 
-[Página Inicial - Tranquilo Mercados](https://cp4-java-advanced-fzrf.onrender.com)
+[Página Inicial - Tranquilo Mercados]()
 
-Página inicial do projeto "Tranquilo Mercados". A página lista os produtos cadastrados no sistema. No topo da tabela é possível pesquisar o produto pelo tipo dele. 
+Página inicial - Login
+- (endpoint **`/login` - login.html)
+  
+<img width="1911" height="730" alt="image" src="https://github.com/user-attachments/assets/7c70a6ab-0768-4a29-bdc8-dae7f733db5d" />
+
+Página de cadastro de usuário - Sign up
+- (endpoint **`/signup` - signup.html)
+  
+<img width="1915" height="788" alt="image" src="https://github.com/user-attachments/assets/8ae87af4-6fbb-4868-a1fd-454d5e905b68" />
+
+Homepage do projeto "Tranquilo Mercados". A página lista os produtos cadastrados no sistema. No topo da tabela é possível pesquisar o produto pelo tipo dele. 
 - (endpoint **`/`** - index.html)
-
+  
 <img width="1599" height="899" alt="pag_inicial" src="https://github.com/user-attachments/assets/6a5d8e4a-386b-4377-9663-c0aae7a74c47" />
 
 Ao clicar no botão "Adicionar Produto" ele redireciona para a página de cadastro de produtos:
